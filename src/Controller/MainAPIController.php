@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\TcResult;
+use App\Classe\Service;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,13 +12,21 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
+
+
 class MainAPIController extends AbstractController
 {
+
 
 
     #[Route('/main', name: 'app_main_API')]
     public function showAction()
     {
+        $service = new Service();
+        $paramStringed = $service->getParam();
+        $param = json_decode($paramStringed);
+
+        var_dump($param);
 
         $resultat = new TcResult();
         $resultat
@@ -70,3 +79,4 @@ class MainAPIController extends AbstractController
     }
 
 }
+
