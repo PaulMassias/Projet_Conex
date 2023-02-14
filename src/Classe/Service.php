@@ -28,6 +28,26 @@
       return $resultat;
    }
 
+   public function calculGainTC(){
+      $param = json_decode($this->parameters);
+      $emissions = $param->ConsoActeTele;
+      $emissions += $param->ConsoEnvArchFich*2; //Taille des fichiers échangés par défaut = 2Mo
+      $emissions += $param->ConsoVisio*10; // Duree de la visio par défaut 10 min
+      $gains = $param->GainPatiMed;
+      $resultat = $gains - $emissions;
+      return $resultat;
+   }
+
+   public function calculGainTCParam($taillefichier, $tempsvisio){
+      $param = json_decode($this->parameters);
+      $emissions = $param->ConsoActeTele;
+      $emissions += $param->ConsoEnvArchFich*$taillefichier; //Taille des fichiers échangés par défaut = 2Mo
+      $emissions += $param->ConsoVisio*$tempsvisio; // Duree de la visio par défaut 10 min
+      $gains = $param->GainPatiMed;
+      $resultat = $gains - $emissions;
+      return $resultat;
+   }
+
  }
 
 

@@ -18,15 +18,8 @@ class MainAPIController extends AbstractController
 {
     #[Route('/tc', name: 'app_tc_API')]
     public function resultatTC(){
-        $consoDeplacementMed = 0.193*10*2;
-
-        $consoTelemedecine = 0.0008515;
-        $consoFichier = 0.1;
-        $consoVisio = 0.000125;
-        
-        $emission = $consoTelemedecine + $consoFichier + $consoVisio;
-        
-        $gain = $consoDeplacementMed - $emission;
+        $service = new Service(); // On crée la classe service qui nous permettra d'appeler les méthodes de calcul
+        $gain = $service->calculGainTC(); // On appelle la méthode de calcul correspondante a la route
 
         $resultat = new Result();
         $resultat
@@ -50,7 +43,34 @@ class MainAPIController extends AbstractController
         return $response;
     }
 
-    #[Route('/tca', name: 'app_tc_API')]
+    #[Route('/tc/{fichier}/{visio}', name: 'app_tc_API')]
+    public function resultatTCParam(int $fichier, int $visio){
+        $service = new Service(); // On crée la classe service qui nous permettra d'appeler les méthodes de calcul
+        $gain = $service->calculGainTCParam($fichier, $visio); // On appelle la méthode de calcul correspondante a la route
+
+        $resultat = new Result();
+        $resultat
+            ->setTitle('Gain Teleconsultation')
+            ->setResultat($gain)
+        ;
+        $normalizers = [
+            new ObjectNormalizer(),
+        ];
+
+        $encoders =[
+            new JsonEncoder(),
+        ];
+
+        $serializer = new Serializer($normalizers,$encoders);
+        $SerData = $serializer->serialize($resultat, 'json');
+
+        $response = new Response($SerData);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    #[Route('/tca', name: 'app_tca_API')]
     public function resultatTCA(){
         $service = new Service(); // On crée la classe service qui nous permettra d'appeler les méthodes de calcul
         $gain = $service->calculGainTCA(); // On appelle la méthode de calcul correspondante a la route
