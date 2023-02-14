@@ -1,0 +1,7 @@
+{"ConsoActeTele":0.0008205,
+"ConsoEnvArchFich":0.1,
+"ConsoVisio":0.000125,
+"ConsoDepHAD":1.68875,
+"GainPatiMed":3.86,
+"GainPatiSpe":7.6621,
+"GainPatiUrg":3.7056}
