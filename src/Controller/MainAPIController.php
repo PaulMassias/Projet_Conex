@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\TcResult;
+use App\Entity\Result;
 use App\Classe\Service;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -28,7 +28,7 @@ class MainAPIController extends AbstractController
         
         $gain = $consoDeplacementMed - $emission;
 
-        $resultat = new TcResult();
+        $resultat = new Result();
         $resultat
             ->setTitle('Gain Teleconsultation')
             ->setResultat($gain)
@@ -50,18 +50,33 @@ class MainAPIController extends AbstractController
         return $response;
     }
 
-    public function resultatTCParam($tailleFichier, $tempsVisio){
-        $consoDeplacementMed = 0.193*10*2;
+    #[Route('/tca', name: 'app_tc_API')]
+    public function resultatTCA(){
+        $service = new Service(); // On crée la classe service qui nous permettra d'appeler les méthodes de calcul
+        $gain = $service->calculGainTCA(); // On appelle la méthode de calcul correspondante a la route
 
-        $consoTelemedecine = 0.0008515;
-        $consoFichier = 0.1 * $tailleFichier;
-        $consoVisio = 0.000125 * $tempsVisio;
+        $resultat = new Result();
+        $resultat
+            ->setTitle('Gain Teleconsultation assistee')
+            ->setResultat($gain) // On stocke le résultat de la méthode de calcul dans l'objet résultat qui sera renvoyé
+        ;
+        $normalizers = [
+            new ObjectNormalizer(),
+        ];
 
-        $emission = $consoTelemedecine + $consoFichier + $consoVisio;
-        
-        $resultat = $consoDeplacementMed - $emission;
-        return $resultat;
+        $encoders =[
+            new JsonEncoder(),
+        ];
+
+        $serializer = new Serializer($normalizers,$encoders);
+        $SerData = $serializer->serialize($resultat, 'json');
+
+        $response = new Response($SerData);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
+
 
 
     #[Route('/main', name: 'app_main_API')]
@@ -73,7 +88,7 @@ class MainAPIController extends AbstractController
 
         var_dump($param);
 
-        $resultat = new TcResult();
+        $resultat = new Result();
         $resultat
             ->setTitle('Mon premier resultat')
             ->setResultat(3.28)
@@ -101,7 +116,7 @@ class MainAPIController extends AbstractController
     public function showAction2()
     {
 
-        $resultat = new TcResult();
+        $resultat = new Result();
         $resultat
             ->setTitle('Mon second resultat')
             ->setResultat(5.58)
