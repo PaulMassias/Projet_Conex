@@ -6,80 +6,51 @@
 
    private $parameters;
 
+
    public function __construct(){
 
+      // On récupère le contenu du fichier "param.txt" que l'on met dans la variable "stringedParam"
       $stringedParam = file_get_contents('../var/parametres/param.txt');
-      $this->parameters = $stringedParam;
+      //On stocke ensuite le contenu décodé dans le membre "parameters" de la classe
+      $this->parameters = json_decode($stringedParam);
 
    }
 
-   public function getParam(){
-      return $this->parameters;
+
+   //Cette fonction permet d'effectuer le calcul d'émission commun à tous les calculs
+   private function calculCommun($taillefichier, $tempsvisio){
+      $emissions = $this->parameters->ConsoActeTele; // On compte la consommation de fonctionnement de l'application
+      $emissions += $this->parameters->ConsoEnvArchFich*$taillefichier; // Ainsi que la consommation d'archivage et d'échange de fichiers
+      $emissions += $this->parameters->ConsoVisio*$tempsvisio; // Pour finir on prends la consommation d'une visio en fonction de son temps
+      return $emissions; // On retourne ensuite la valeur d'émissions pour pouvoir poursuivre le calcul
    }
 
-   public function calculGainTCA(){
-      $param = json_decode($this->parameters);
-      $emissions = $param->ConsoActeTele;
-      $emissions += $param->ConsoEnvArchFich*2; //Taille des fichiers échangés par défaut = 2Mo
-      $emissions += $param->ConsoVisio*10; // Duree de la visio par défaut 10 min
-      $emissions += $param->ConsoDepHAD;
-      $gains = $param->GainPatiMed;
-      $resultat = $gains - $emissions;
-      return $resultat;
-   }
 
    public function calculGainTCAParam($taillefichier, $tempsvisio){
-      $param = json_decode($this->parameters);
-      $emissions = $param->ConsoActeTele;
-      $emissions += $param->ConsoEnvArchFich*$taillefichier; 
-      $emissions += $param->ConsoVisio*$tempsvisio; 
-      $emissions += $param->ConsoDepHAD;
-      $gains = $param->GainPatiMed;
-      $resultat = $gains - $emissions;
+      $emissions= $this->calculCommun($taillefichier, $tempsvisio); // On appelle la fonction de calcul de la partie commune
+      $emissions += $this->parameters->ConsoDepHAD; // Auxquelles on ajoute les consommations particulières de méthodes si il y en a
+      $gains = $this->parameters->GainPatiMed; // On définit ensuite les gains
+      $resultat = $gains - $emissions; // Pour finir on déduit les émissions des gains
       return $resultat;
    }
 
-   public function calculGainTC(){
-      $param = json_decode($this->parameters);
-      $emissions = $param->ConsoActeTele;
-      $emissions += $param->ConsoEnvArchFich*2; //Taille des fichiers échangés par défaut = 2Mo
-      $emissions += $param->ConsoVisio*10; // Duree de la visio par défaut 10 min
-      $gains = $param->GainPatiMed;
-      $resultat = $gains - $emissions;
-      return $resultat;
-   }
 
    public function calculGainTCParam($taillefichier, $tempsvisio){
-      $param = json_decode($this->parameters);
-      $emissions = $param->ConsoActeTele;
-      $emissions += $param->ConsoEnvArchFich*$taillefichier; 
-      $emissions += $param->ConsoVisio*$tempsvisio; 
-      $gains = $param->GainPatiMed;
-      $resultat = $gains - $emissions;
+      $emissions= $this->calculCommun($taillefichier, $tempsvisio);// On appelle la fonction de calcul de la partie commune
+      $gains = $this->parameters->GainPatiMed;// On définit ensuite les gains
+      $resultat = $gains - $emissions;// Pour finir on déduit les émissions des gains
       return $resultat;
    }
 
-   public function calculGainTE(){
-      $param = json_decode($this->parameters);
-      $emissions = $param->ConsoActeTele;
-      $emissions += $param->ConsoEnvArchFich*2; //Taille des fichiers échangés par défaut = 2Mo
-      $emissions += $param->ConsoVisio*10; // Duree de la visio par défaut 10 min
-      $gains = $param->GainPatiSpe;
-      $gains += $param->GainPatiUrg;
-      $resultat = $gains - $emissions;
-      return $resultat;
-   }
-
+   
    public function calculGainTEParam($taillefichier, $tempsvisio){
-      $param = json_decode($this->parameters);
-      $emissions = $param->ConsoActeTele;
-      $emissions += $param->ConsoEnvArchFich*$taillefichier; //Taille des fichiers échangés par défaut = 2Mo
-      $emissions += $param->ConsoVisio*$tempsvisio; // Duree de la visio par défaut 10 min
-      $gains = $param->GainPatiSpe;
-      $gains += $param->GainPatiUrg;
-      $resultat = $gains - $emissions;
+      $emissions= $this->calculCommun($taillefichier, $tempsvisio);// On appelle la fonction de calcul de la partie commune
+      $gains = $this->parameters->GainPatiSpe;// On définit ensuite les gains
+      $gains += $this->parameters->GainPatiUrg;
+      $resultat = $gains - $emissions;// Pour finir on déduit les émissions des gains
       return $resultat;
    }
+
 
  }
 
