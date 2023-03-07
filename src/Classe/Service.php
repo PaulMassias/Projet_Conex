@@ -10,7 +10,7 @@
    public function __construct(){
 
       // On récupère le contenu du fichier "param.txt" que l'on met dans la variable "stringedParam"
-      $stringedParam = file_get_contents('../var/parametres/param.txt');
+      $stringedParam = file_get_contents('../src/config.txt');
       //On stocke ensuite le contenu décodé dans le membre "parameters" de la classe
       $this->parameters = json_decode($stringedParam);
 
