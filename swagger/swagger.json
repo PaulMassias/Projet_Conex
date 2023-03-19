@@ -1,0 +1,40 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/posts": {
+            "get": {
+                "operationId": "43563e798084af7303b28f76a50157d5",
+                "responses": {
+                    "200": {
+                        "description": "resultatTC",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Post": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "content": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

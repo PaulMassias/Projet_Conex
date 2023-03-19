@@ -1,0 +1,277 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/tc": {
+            "get": {
+                "tags": [
+                    "Teleconsultation"
+                ],
+                "summary": "Calculer le gain de la téléconsultation avec des paramètres par défaut",
+                "description": "Cette route permet de calculer le gain de la téléconsultation avec des valeurs par défaut pour les paramètres `fichier` et `visio`.",
+                "operationId": "resultatTCDefaut",
+                "parameters": [
+                    {
+                        "name": "fichier",
+                        "in": "path",
+                        "description": "Taille en Mo du fichiers partagés pendant la téléconsultation (valeur par défaut : 2)",
+                        "schema": {
+                            "type": "integer",
+                            "default": "2"
+                        }
+                    },
+                    {
+                        "name": "visio",
+                        "in": "path",
+                        "description": "Durée en minutes de la téléconsultation (valeur par défaut : 10)",
+                        "schema": {
+                            "type": "integer",
+                            "default": "10"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retourne le gain de la téléconsultation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Gain Teleconsultation"
+                                        },
+                                        "resultat": {
+                                            "type": "number",
+                                            "example": 3.6579295
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tc/{fichier}/{visio}": {
+            "get": {
+                "tags": [
+                    "Teleconsultation"
+                ],
+                "summary": "Calculer le gain de la téléconsultation avec des paramètres personnalisés",
+                "description": "Cette route permet de calculer le gain de la téléconsultation avec des valeurs personnalisés pour les paramètres `fichier` et `visio`.",
+                "operationId": "resultatTCParam",
+                "parameters": [
+                    {
+                        "name": "fichier",
+                        "in": "path",
+                        "description": "Taille en Mo du fichiers partagés pendant la téléconsultation (valeur par défaut : 2)",
+                        "schema": {
+                            "type": "integer",
+                            "default": "2"
+                        }
+                    },
+                    {
+                        "name": "visio",
+                        "in": "path",
+                        "description": "Durée en minutes de la téléconsultation (valeur par défaut : 10)",
+                        "schema": {
+                            "type": "integer",
+                            "default": "10"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retourne le gain de la téléconsultation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Gain Teleconsultation"
+                                        },
+                                        "resultat": {
+                                            "type": "number",
+                                            "example": 3.6579295
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tca": {
+            "get": {
+                "tags": [
+                    "Teleconsultation assistee"
+                ],
+                "summary": "Calculer le gain de la téléconsultation assistee avec des paramètres par défaut",
+                "description": "Cette route permet de calculer le gain de la téléconsultation assistee avec des valeurs par défaut pour les paramètres `fichier` et `visio`.",
+                "operationId": "resultatTCADefaut",
+                "responses": {
+                    "200": {
+                        "description": "Retourne le gain de la teleconsultation assistee",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Gain Teleconsultation assistee"
+                                        },
+                                        "resultat": {
+                                            "type": "number",
+                                            "example": 1.9691794999999999
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tca/{fichier}/{visio}": {
+            "get": {
+                "tags": [
+                    "Teleconsultation assistee"
+                ],
+                "summary": "Calculer le gain de la téléconsultation assistee avec des paramètres personnalisés",
+                "description": "Cette route permet de calculer le gain de la téléconsultation assistee avec des valeurs personnalisées pour les paramètres `fichier` et `visio`.",
+                "operationId": "resultatTCAParam",
+                "parameters": [
+                    {
+                        "name": "fichier",
+                        "in": "path",
+                        "description": "Taille en Mo du fichiers partagés pendant la téléconsultation assistee (valeur par défaut : 2)",
+                        "schema": {
+                            "type": "integer",
+                            "default": "2"
+                        }
+                    },
+                    {
+                        "name": "visio",
+                        "in": "path",
+                        "description": "Durée en minutes de la téléconsultation assistee (valeur par défaut : 10)",
+                        "schema": {
+                            "type": "integer",
+                            "default": "10"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retourne le gain de la teleconsultation assistee",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Gain Teleconsultation assistee"
+                                        },
+                                        "resultat": {
+                                            "type": "number",
+                                            "example": 1.9691794999999999
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/te": {
+            "get": {
+                "tags": [
+                    "Téléexpertise"
+                ],
+                "summary": "Calculer le gain de la téléexpertise avec des paramètres par défaut",
+                "description": "Cette route permet de calculer le gain de la téléexpertise avec des valeurs par défaut pour les paramètres `fichier` et `visio`.",
+                "operationId": "resultatTEDefaut",
+                "responses": {
+                    "200": {
+                        "description": "Retourne le gain de la téléexpertise",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Gain Teleexpertise"
+                                        },
+                                        "resultat": {
+                                            "type": "number",
+                                            "example": 11.1656295
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/te/{fichier}/{visio}": {
+            "get": {
+                "tags": [
+                    "Téléexpertise"
+                ],
+                "summary": "Calculer le gain de la téléexpertise avec des paramètres personnalisées",
+                "description": "Cette route permet de calculer le gain de la téléexpertise avec des valeurs personnalisées pour les paramètres `fichier` et `visio`.",
+                "operationId": "resultatTEParam",
+                "parameters": [
+                    {
+                        "name": "fichier",
+                        "in": "path",
+                        "description": "Taille en Mo du fichiers partagés pendant la téléexpertise (valeur par défaut : 2)",
+                        "schema": {
+                            "type": "integer",
+                            "default": "2"
+                        }
+                    },
+                    {
+                        "name": "visio",
+                        "in": "path",
+                        "description": "Durée en minutes de la téléexpertise (valeur par défaut : 10)",
+                        "schema": {
+                            "type": "integer",
+                            "default": "10"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retourne le gain de la téléexpertise",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Gain Teleexpertise"
+                                        },
+                                        "resultat": {
+                                            "type": "number",
+                                            "example": 11.1656295
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
