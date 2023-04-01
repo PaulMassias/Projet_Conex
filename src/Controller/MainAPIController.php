@@ -22,20 +22,8 @@ class MainAPIController extends AbstractController
  *      path="/tc",
  *      operationId="resultatTCDefaut",
  *      tags={"Teleconsultation"},
- *      summary="Calculer le gain de la téléconsultation avec des paramètres par défaut",
- *      description="Cette route permet de calculer le gain de la téléconsultation avec des valeurs par défaut pour les paramètres `fichier` et `visio`.",
- *      @OA\Parameter(
- *          name="fichier",
- *          in="path",
- *          description="Taille en Mo du fichiers partagés pendant la téléconsultation (valeur par défaut : 2)",
- *          @OA\Schema(type="integer", default="2")
- *      ),
- *      @OA\Parameter(
- *          name="visio",
- *          in="path",
- *          description="Durée en minutes de la téléconsultation (valeur par défaut : 10)",
- *          @OA\Schema(type="integer", default="10")
- *      ),
+ *      summary="Calculer le gain de la téléconsultation avec des paramètres par défaut (2 Mo et 10 minutes)",
+ *      description="Cette route permet de calculer le gain de la téléconsultation avec des valeurs par défaut pour les paramètres `fichier` à 2Mo et `visio` à 10 minutes.",
  *      @OA\Response(
  *          response=200,
  *          description="Retourne le gain de la téléconsultation",
@@ -54,14 +42,14 @@ class MainAPIController extends AbstractController
  *      @OA\Parameter(
  *          name="fichier",
  *          in="path",
- *          description="Taille en Mo du fichiers partagés pendant la téléconsultation (valeur par défaut : 2)",
- *          @OA\Schema(type="integer", default="2")
+ *          description="Taille en Mo du fichiers partagés pendant la téléconsultation",
+ *          @OA\Schema(type="integer")
  *      ),
  *      @OA\Parameter(
  *          name="visio",
  *          in="path",
- *          description="Durée en minutes de la téléconsultation (valeur par défaut : 10)",
- *          @OA\Schema(type="integer", default="10")
+ *          description="Durée en minutes de la téléconsultation",
+ *          @OA\Schema(type="integer")
  *      ),
  *      @OA\Response(
  *          response=200,
@@ -108,8 +96,8 @@ class MainAPIController extends AbstractController
  *      path="/tca",
  *      operationId="resultatTCADefaut",
  *      tags={"Teleconsultation assistee"},
- *      summary="Calculer le gain de la téléconsultation assistee avec des paramètres par défaut",
- *      description="Cette route permet de calculer le gain de la téléconsultation assistee avec des valeurs par défaut pour les paramètres `fichier` et `visio`.",
+ *      summary="Calculer le gain de la téléconsultation assistee avec des paramètres par défaut (2 Mo et 10 minutes)",
+ *      description="Cette route permet de calculer le gain de la téléconsultation assistee avec des valeurs par défaut pour les paramètres `fichier` à 2 Mo et `visio` à 10 minutes.",
  *      @OA\Response(
  *          response=200,
  *          description="Retourne le gain de la teleconsultation assistee",
@@ -128,14 +116,14 @@ class MainAPIController extends AbstractController
  *      @OA\Parameter(
  *          name="fichier",
  *          in="path",
- *          description="Taille en Mo du fichiers partagés pendant la téléconsultation assistee (valeur par défaut : 2)",
- *          @OA\Schema(type="integer", default="2")
+ *          description="Taille en Mo du fichiers partagés pendant la téléconsultation assistee",
+ *          @OA\Schema(type="integer")
  *      ),
  *      @OA\Parameter(
  *          name="visio",
  *          in="path",
- *          description="Durée en minutes de la téléconsultation assistee (valeur par défaut : 10)",
- *          @OA\Schema(type="integer", default="10")
+ *          description="Durée en minutes de la téléconsultation assistee",
+ *          @OA\Schema(type="integer")
  *      ),
  *      @OA\Response(
  *          response=200,
@@ -182,8 +170,8 @@ class MainAPIController extends AbstractController
  *      path="/te",
  *      operationId="resultatTEDefaut",
  *      tags={"Téléexpertise"},
- *      summary="Calculer le gain de la téléexpertise avec des paramètres par défaut",
- *      description="Cette route permet de calculer le gain de la téléexpertise avec des valeurs par défaut pour les paramètres `fichier` et `visio`.",
+ *      summary="Calculer le gain de la téléexpertise avec des paramètres par défaut (2 Mo et 10 minutes)",
+ *      description="Cette route permet de calculer le gain de la téléexpertise avec des valeurs par défaut pour les paramètres `fichier` à 2 Mo et `visio` à 10 minutes.",
  *      @OA\Response(
  *          response=200,
  *          description="Retourne le gain de la téléexpertise",
@@ -202,14 +190,14 @@ class MainAPIController extends AbstractController
  *      @OA\Parameter(
  *          name="fichier",
  *          in="path",
- *          description="Taille en Mo du fichiers partagés pendant la téléexpertise (valeur par défaut : 2)",
- *          @OA\Schema(type="integer", default="2")
+ *          description="Taille en Mo du fichiers partagés pendant la téléexpertise",
+ *          @OA\Schema(type="integer")
  *      ),
  *      @OA\Parameter(
  *          name="visio",
  *          in="path",
- *          description="Durée en minutes de la téléexpertise (valeur par défaut : 10)",
- *          @OA\Schema(type="integer", default="10")
+ *          description="Durée en minutes de la téléexpertise",
+ *          @OA\Schema(type="integer")
  *      ),
  *      @OA\Response(
  *          response=200,
@@ -248,8 +236,4 @@ class MainAPIController extends AbstractController
 
         return $response;
     }
-
-
-
 }
-
