@@ -47,7 +47,7 @@
                         "in": "path",
                         "description": "Taille en Mo du fichiers partagés pendant la téléconsultation",
                         "schema": {
-                            "type": "integer"
+                            "type": "number"
                         }
                     },
                     {
@@ -55,7 +55,7 @@
                         "in": "path",
                         "description": "Durée en minutes de la téléconsultation",
                         "schema": {
-                            "type": "integer"
+                            "type": "number"
                         }
                     }
                 ],
@@ -129,7 +129,7 @@
                         "in": "path",
                         "description": "Taille en Mo du fichiers partagés pendant la téléconsultation assistee",
                         "schema": {
-                            "type": "integer"
+                            "type": "number"
                         }
                     },
                     {
@@ -137,7 +137,7 @@
                         "in": "path",
                         "description": "Durée en minutes de la téléconsultation assistee",
                         "schema": {
-                            "type": "integer"
+                            "type": "number"
                         }
                     }
                 ],
@@ -211,7 +211,7 @@
                         "in": "path",
                         "description": "Taille en Mo du fichiers partagés pendant la téléexpertise",
                         "schema": {
-                            "type": "integer"
+                            "type": "number"
                         }
                     },
                     {
@@ -219,7 +219,7 @@
                         "in": "path",
                         "description": "Durée en minutes de la téléexpertise",
                         "schema": {
-                            "type": "integer"
+                            "type": "number"
                         }
                     }
                 ],

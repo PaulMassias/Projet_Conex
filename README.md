@@ -17,5 +17,8 @@ composer require zircote/swagger-php
 http://127.0.0.1:8000/swagger/
 lien vers l'interface swagger
 
+Pour mettre a jour les modification openAPI
+./vendor/bin/openapi --format json --output ./public/swagger/swagger.json ./swagger/swagger.php src
+
 http://127.0.0.1:8000/test/api
 lien vers la page de test
