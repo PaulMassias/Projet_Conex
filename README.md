@@ -8,6 +8,9 @@ symfony open:local
 Pour installer si il ne reconnais pas les use importés
 symfony composer require symfony/serializer-pack
 
+A installer :
+composer require --dev symfony/profiler-pack
+
 Pour importer swagger :
 composer require zircote/swagger-php
 

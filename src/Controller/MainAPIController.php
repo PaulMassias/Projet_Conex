@@ -43,13 +43,13 @@ class MainAPIController extends AbstractController
  *          name="fichier",
  *          in="path",
  *          description="Taille en Mo du fichiers partagés pendant la téléconsultation",
- *          @OA\Schema(type="integer")
+ *          @OA\Schema(type="number")
  *      ),
  *      @OA\Parameter(
  *          name="visio",
  *          in="path",
  *          description="Durée en minutes de la téléconsultation",
- *          @OA\Schema(type="integer")
+ *          @OA\Schema(type="number")
  *      ),
  *      @OA\Response(
  *          response=200,
@@ -63,7 +63,7 @@ class MainAPIController extends AbstractController
  */
 
     #[Route('/tc/{fichier}/{visio}', name: 'app_tc_param_API')]
-    public function resultatTCParam(int $fichier = 2, int $visio = 10){
+    public function resultatTCParam(float $fichier = 2, float $visio = 10){
 
         $service = new Service(); // On crée la classe service qui nous permettra d'appeler les méthodes de calcul
         $gain = $service->calculGainTCParam($fichier, $visio); // On appelle la méthode de calcul correspondante a la route
@@ -117,13 +117,13 @@ class MainAPIController extends AbstractController
  *          name="fichier",
  *          in="path",
  *          description="Taille en Mo du fichiers partagés pendant la téléconsultation assistee",
- *          @OA\Schema(type="integer")
+ *          @OA\Schema(type="number")
  *      ),
  *      @OA\Parameter(
  *          name="visio",
  *          in="path",
  *          description="Durée en minutes de la téléconsultation assistee",
- *          @OA\Schema(type="integer")
+ *          @OA\Schema(type="number")
  *      ),
  *      @OA\Response(
  *          response=200,
@@ -138,7 +138,7 @@ class MainAPIController extends AbstractController
  * 
  */
     #[Route('/tca/{fichier}/{visio}', name: 'app_tca_param_API')]
-    public function resultatTCAParam(int $fichier = 2, int $visio = 10){
+    public function resultatTCAParam(float $fichier = 2, float $visio = 10){
 
         $service = new Service(); // On crée la classe service qui nous permettra d'appeler les méthodes de calcul
         $gain = $service->calculGainTCAParam($fichier,$visio); // On appelle la méthode de calcul correspondante a la route
@@ -191,13 +191,13 @@ class MainAPIController extends AbstractController
  *          name="fichier",
  *          in="path",
  *          description="Taille en Mo du fichiers partagés pendant la téléexpertise",
- *          @OA\Schema(type="integer")
+ *          @OA\Schema(type="number")
  *      ),
  *      @OA\Parameter(
  *          name="visio",
  *          in="path",
  *          description="Durée en minutes de la téléexpertise",
- *          @OA\Schema(type="integer")
+ *          @OA\Schema(type="number")
  *      ),
  *      @OA\Response(
  *          response=200,
@@ -210,7 +210,7 @@ class MainAPIController extends AbstractController
  * )
  */
     #[Route('/te/{fichier}/{visio}', name: 'app_te_param_API')]
-    public function resultatTEParam(int $fichier = 2, int $visio = 10){
+    public function resultatTEParam(float $fichier = 2, float $visio = 10){
 
         $service = new Service(); // On crée la classe service qui nous permettra d'appeler les méthodes de calcul
         $gain = $service->calculGainTEParam($fichier,$visio); // On appelle la méthode de calcul correspondante a la route
