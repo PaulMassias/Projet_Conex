@@ -37,7 +37,7 @@
                     <td>/tc/0.40/10</td>
                     <td>0.40</td>
                     <td>10</td>
-                    <td>3.8</td>
+                    <td>{{tc1_attendu}}</td>
                     <td>{{tc1|number_format(2)}}</td>
                 </tr>
                 <tr{% if ( (tc2_attendu - marge_erreur) <= tc2|number_format(2) and tc2|number_format(2) <= (tc1_attendu + marge_erreur)) %} class="green"{% else %} class="red"{% endif %}>
@@ -45,7 +45,7 @@
                     <td>/tc/4/20</td>
                     <td>4</td>
                     <td>20</td>
-                    <td>3.45</td>
+                    <td>{{tc2_attendu}}</td>
                     <td>{{tc2|number_format(2)}}</td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@
                     <td>/te/8</td>
                     <td>8</td>
                     <td>Na</td>
-                    <td>10.6</td>
+                    <td>{{te1_attendu}}</td>
                     <td>{{te1|number_format(2)}}</td>
                 </tr>
                 <tr{% if ( (te2_attendu - marge_erreur) <= te2|number_format(2) and te2|number_format(2) <= (te2_attendu + marge_erreur)) %} class="green"{% else %} class="red"{% endif %}>
@@ -64,7 +64,7 @@
                     <td>/te/4/30</td>
                     <td>4</td>
                     <td>30</td>
-                    <td>10.96</td>
+                    <td>{{te2_attendu}}</td>
                     <td>{{te2|number_format(2)}}</td>
                 </tr>
 
@@ -76,7 +76,7 @@
                     <td>/tca/0.20/10</td>
                     <td>0.20</td>
                     <td>10</td>
-                    <td>2.16</td>
+                    <td>{{tca1_attendu}}</td>
                     <td>{{tca1|number_format(2)}}</td>
                 </tr>
                 <tr>
@@ -85,7 +85,7 @@
                     <td>/tca/4.20/20</td>
                     <td>4.20</td>
                     <td>20</td>
-                    <td>1.74</td>
+                    <td>{{tca2_attendu}}</td>
                     <td>{{tca2|number_format(2)}}</td>
                 </tr>
 
