@@ -22,3 +22,5 @@ Pour mettre a jour les modification openAPI
 
 http://127.0.0.1:8000/test/api
 lien vers la page de test
+
+Vous trouverez aussi dans ce répertoire le rapport final de projet tutoré ainsi que le calculateur développé au premier semestre
