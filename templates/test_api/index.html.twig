@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de test de l'API !{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    td{text-align: center}
+    .green{ background-color: green }
+    .red{ background-color: red }
+
+</style>
+
+<div class="example-wrapper">
+    <h1> Test des routes de l'API</h1>
+    <p>Les valeurs retournée par l'API sont arrondies à la centième. </br> La validation des tests prennent en compte une marge d'erreur a été fixée à {{marge_erreur}} </p>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Route de l’API</th>
+                    <th>Volume des fichiers échangés(Mo)</th>
+                    <th>Temps d’appel de la consultation(min)</th>
+                    <th>Gain attendu (kg de CO2)</th>
+                    <th>Gain API (kg de CO2)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Téléconsultation</th>
+                </tr>
+                <tr{% if ( (tc1_attendu - marge_erreur) <= tc1|number_format(2) and tc1|number_format(2) <= (tc1_attendu + marge_erreur)) %} class="green"{% else %} class="red"{% endif %}>
+                    <td>1</td>
+                    <td>/tc/0.40/10</td>
+                    <td>0.40</td>
+                    <td>10</td>
+                    <td>{{tc1_attendu}}</td>
+                    <td>{{tc1|number_format(2)}}</td>
+                </tr>
+                <tr{% if ( (tc2_attendu - marge_erreur) <= tc2|number_format(2) and tc2|number_format(2) <= (tc1_attendu + marge_erreur)) %} class="green"{% else %} class="red"{% endif %}>
+                    <td>2</td>
+                    <td>/tc/4/20</td>
+                    <td>4</td>
+                    <td>20</td>
+                    <td>{{tc2_attendu}}</td>
+                    <td>{{tc2|number_format(2)}}</td>
+                </tr>
+                <tr>
+                    <th>Téléexpertise</th>
+                </tr>
+                <tr{% if ( (te1_attendu - marge_erreur) <= te1|number_format(2) and te1|number_format(2) <= (te1_attendu + marge_erreur)) %} class="green"{% else %} class="red"{% endif %}>
+                    <td>1</td>
+                    <td>/te/8</td>
+                    <td>8</td>
+                    <td>Na</td>
+                    <td>{{te1_attendu}}</td>
+                    <td>{{te1|number_format(2)}}</td>
+                </tr>
+                <tr{% if ( (te2_attendu - marge_erreur) <= te2|number_format(2) and te2|number_format(2) <= (te2_attendu + marge_erreur)) %} class="green"{% else %} class="red"{% endif %}>
+                    <td>2</td>
+                    <td>/te/4/30</td>
+                    <td>4</td>
+                    <td>30</td>
+                    <td>{{te2_attendu}}</td>
+                    <td>{{te2|number_format(2)}}</td>
+                </tr>
+
+                <tr>
+                    <th>Téléconsultation assistée</th>
+                </tr>
+                <tr{% if ( (tca1_attendu - marge_erreur) <= tca1|number_format(2) and tca1|number_format(2) <= (tca1_attendu + marge_erreur)) %} class="green"{% else %} class="red"{% endif %}>
+                    <td>1</td>
+                    <td>/tca/0.20/10</td>
+                    <td>0.20</td>
+                    <td>10</td>
+                    <td>{{tca1_attendu}}</td>
+                    <td>{{tca1|number_format(2)}}</td>
+                </tr>
+                <tr>
+                <tr{% if ( (tca2_attendu - marge_erreur) <= tca2|number_format(2) and tca2|number_format(2) <= (tca2_attendu + marge_erreur)) %} class="green"{% else %} class="red"{% endif %}>
+                    <td>2</td>
+                    <td>/tca/4.20/20</td>
+                    <td>4.20</td>
+                    <td>20</td>
+                    <td>{{tca2_attendu}}</td>
+                    <td>{{tca2|number_format(2)}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    
+    <div>
+
+        <h2>Téléconsultation</h2>
+            <ul>
+                <li>M Dupont s’est tordu la cheville, il appelle son médecin pendant 10 minutes grâce à la plateforme CONEX SANTÉ, son médecin lui envoie un compte rendu et une ordonnance pour un total de 40 Ko.</li>
+                    <p>Résultats attendus : {{tc1_attendu}} kg de CO2 économisés. </p>
+                    <p>Résultats calculés :  {{tc1|number_format(2)}} kg de CO2 économisés. </p>
+                </br>
+                <li>M Dupont s’est foulé le poignet, il appelle son médecin pendant 20 minutes grâce à la plateforme CONEX SANTÉ, son médecin lui envoie un compte rendu et une ordonnance pour un total de 40 Mo.</li>
+                    <p>Résultats attendus : {{tc2_attendu}} kg de CO2 économisés. </p>
+                    <p>Résultats calculés : {{tc2|number_format(2)}} kg de CO2 économisés. </p>
+            </ul>
+
+        <h2>Téléexpertise</h2>
+            <ul>
+                <li>Le médecin contacte un dermatologue pour un de ses patients, il lui envoie 2 photos du grain de beauté suspect,grâce à la plateforme CONEX SANTÉ, pour un total de 8 Mo. Le spécialiste confirme qu’il n'a pas besoin de voir le patient.</li>
+                    <p>Résultats attendus : {{te1_attendu}} kg de CO2 économisés. </p>
+                    <p>Résultats calculés : {{te1|number_format(2)}} kg de CO2 économisés. </p>
+                </br>
+                <li>Le médecin généraliste repère une anomalie cardiaque chez son patient, il contacte donc un cardiologue. Après 30 min d’échange et 1 photo de environ 4 Mo, le cardiologue conclut qu’il n’est pas nécessaire de le voir.</li>
+                    <p>Résultats attendus : {{te2_attendu}} kg de CO2 économisés. </p>
+                    <p>Résultats calculés : {{te2|number_format(2)}} kg de CO2 économisés. </p>
+            </ul>
+        <h2>Téléconsultation assistée</h2>
+            <ul>
+                <li>M Dupond est suivi à domicile suite à une intervention chirurgicale. Lors de sa visite, l'infirmière appelle le médecin,grâce à la plateforme CONEX SANTÉ, pour lui faire part de son état de guérison. L’appel dure 10 minutes et au terme de celui-ci, le médecin envoie un compte-rendu pour un total de 20 ko.</li>
+                    <p>Résultats attendus : {{tca1_attendu}} kg de CO2 économisés. </p>
+                    <p>Résultats calculés : {{tca1|number_format(2)}} kg de CO2 économisés. </p>
+                </br>
+                <li>M Dupont est suivi à domicile suite à une intervention chirurgicale. Lors de sa visite, l'infirmière appelle le médecin,grâce à la plateforme CONEX SANTÉ, pour lui faire part de son état de guérison. L’appel dure 20 minutes et l'infirmière envoie une photo de la plaie en cicatrisation (4 Mo). Le médecin, quant à lui, envoie un compte-rendu pour un total de 20 ko.</li>
+                    <p>Résultats attendus : {{tca2_attendu}} kg de CO2 économisés. </p>
+                    <p>Résultats calculés : {{tca2|number_format(2)}} kg de CO2 économisés. </p>
+            </ul>
+    </div>    
+</div>
+{% endblock %}

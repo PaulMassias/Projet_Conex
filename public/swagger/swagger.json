@@ -6,29 +6,9 @@
                 "tags": [
                     "Teleconsultation"
                 ],
-                "summary": "Calculer le gain de la téléconsultation avec des paramètres par défaut",
-                "description": "Cette route permet de calculer le gain de la téléconsultation avec des valeurs par défaut pour les paramètres `fichier` et `visio`.",
+                "summary": "Calculer le gain de la téléconsultation avec des paramètres par défaut (2 Mo et 10 minutes)",
+                "description": "Cette route permet de calculer le gain de la téléconsultation avec des valeurs par défaut pour les paramètres `fichier` à 2Mo et `visio` à 10 minutes.",
                 "operationId": "resultatTCDefaut",
-                "parameters": [
-                    {
-                        "name": "fichier",
-                        "in": "path",
-                        "description": "Taille en Mo du fichiers partagés pendant la téléconsultation (valeur par défaut : 2)",
-                        "schema": {
-                            "type": "integer",
-                            "default": "2"
-                        }
-                    },
-                    {
-                        "name": "visio",
-                        "in": "path",
-                        "description": "Durée en minutes de la téléconsultation (valeur par défaut : 10)",
-                        "schema": {
-                            "type": "integer",
-                            "default": "10"
-                        }
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "Retourne le gain de la téléconsultation",
@@ -65,19 +45,17 @@
                     {
                         "name": "fichier",
                         "in": "path",
-                        "description": "Taille en Mo du fichiers partagés pendant la téléconsultation (valeur par défaut : 2)",
+                        "description": "Taille en Mo du fichiers partagés pendant la téléconsultation",
                         "schema": {
-                            "type": "integer",
-                            "default": "2"
+                            "type": "number"
                         }
                     },
                     {
                         "name": "visio",
                         "in": "path",
-                        "description": "Durée en minutes de la téléconsultation (valeur par défaut : 10)",
+                        "description": "Durée en minutes de la téléconsultation",
                         "schema": {
-                            "type": "integer",
-                            "default": "10"
+                            "type": "number"
                         }
                     }
                 ],
@@ -110,8 +88,8 @@
                 "tags": [
                     "Teleconsultation assistee"
                 ],
-                "summary": "Calculer le gain de la téléconsultation assistee avec des paramètres par défaut",
-                "description": "Cette route permet de calculer le gain de la téléconsultation assistee avec des valeurs par défaut pour les paramètres `fichier` et `visio`.",
+                "summary": "Calculer le gain de la téléconsultation assistee avec des paramètres par défaut (2 Mo et 10 minutes)",
+                "description": "Cette route permet de calculer le gain de la téléconsultation assistee avec des valeurs par défaut pour les paramètres `fichier` à 2 Mo et `visio` à 10 minutes.",
                 "operationId": "resultatTCADefaut",
                 "responses": {
                     "200": {
@@ -149,19 +127,17 @@
                     {
                         "name": "fichier",
                         "in": "path",
-                        "description": "Taille en Mo du fichiers partagés pendant la téléconsultation assistee (valeur par défaut : 2)",
+                        "description": "Taille en Mo du fichiers partagés pendant la téléconsultation assistee",
                         "schema": {
-                            "type": "integer",
-                            "default": "2"
+                            "type": "number"
                         }
                     },
                     {
                         "name": "visio",
                         "in": "path",
-                        "description": "Durée en minutes de la téléconsultation assistee (valeur par défaut : 10)",
+                        "description": "Durée en minutes de la téléconsultation assistee",
                         "schema": {
-                            "type": "integer",
-                            "default": "10"
+                            "type": "number"
                         }
                     }
                 ],
@@ -194,8 +170,8 @@
                 "tags": [
                     "Téléexpertise"
                 ],
-                "summary": "Calculer le gain de la téléexpertise avec des paramètres par défaut",
-                "description": "Cette route permet de calculer le gain de la téléexpertise avec des valeurs par défaut pour les paramètres `fichier` et `visio`.",
+                "summary": "Calculer le gain de la téléexpertise avec des paramètres par défaut (2 Mo et 10 minutes)",
+                "description": "Cette route permet de calculer le gain de la téléexpertise avec des valeurs par défaut pour les paramètres `fichier` à 2 Mo et `visio` à 10 minutes.",
                 "operationId": "resultatTEDefaut",
                 "responses": {
                     "200": {
@@ -233,19 +209,17 @@
                     {
                         "name": "fichier",
                         "in": "path",
-                        "description": "Taille en Mo du fichiers partagés pendant la téléexpertise (valeur par défaut : 2)",
+                        "description": "Taille en Mo du fichiers partagés pendant la téléexpertise",
                         "schema": {
-                            "type": "integer",
-                            "default": "2"
+                            "type": "number"
                         }
                     },
                     {
                         "name": "visio",
                         "in": "path",
-                        "description": "Durée en minutes de la téléexpertise (valeur par défaut : 10)",
+                        "description": "Durée en minutes de la téléexpertise",
                         "schema": {
-                            "type": "integer",
-                            "default": "10"
+                            "type": "number"
                         }
                     }
                 ],
